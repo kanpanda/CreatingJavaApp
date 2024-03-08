@@ -1,8 +1,14 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.User;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,7 +24,7 @@ public class HelloController {
 	@GetMapping("/get")
 	// 返却する値をJSONで返せるようにいい感じにしてくれるおまじない。JSONというものは、形だけ知ってほしい。活用場所は、まだ知らなくていい。
 	@ResponseBody
-	public String getAllUser() {
+	public String getUser() {
 		String result = "Stringを返します";
 		return result;
 
@@ -31,6 +37,32 @@ public class HelloController {
 	public void testMethod(@RequestParam String param) {
 		System.out.println("----------次の行で、引数を出力します。");
 		System.out.println(param);
+	}
+
+	// これは、データのやり取りの実感がわきやすい感じで作ってみた。
+	// shinoru と nks というユーザーを、個々の中でnewで作成しているが、ここを、本当はデータベースからとってくる、というイメージ。
+	// 実際に下記のURLをブラウザに入れて、帰ってくる文字を見てほしい。その帰ってきたものが、JSONといわれるもので、フロントは、このJSONを使って、内容を表示していく。
+	// http://localhost:8080/user/all
+	@GetMapping("/all")
+	public List<User> getAllUser() {
+		List<User> reusltUserList = new ArrayList<>();
+
+		User shinoru = new User();
+		shinoru.setAge(34);
+		shinoru.setUserId(1);
+		shinoru.setUserName("snr");
+
+		reusltUserList.add(shinoru);
+
+		User nks = new User();
+		nks.setAge(35);
+		nks.setUserId(2);
+		nks.setUserName("nakashii");
+
+		reusltUserList.add(nks);
+
+		return reusltUserList;
+
 	}
 
 }
