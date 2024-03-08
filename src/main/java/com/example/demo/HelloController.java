@@ -4,11 +4,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/hello")
-
+@RequestMapping("/sample")
 public class HelloController {
-//	@RequestMapping(value="/hello")
-	private String hello(){
-	return "hello.html";
+
+	@RequestMapping("/hello")
+	private String hello() {
+		System.out.println("helloをとらえました");
+		return "hello.html";
+	}
+
+	@RequestMapping("/bravo")
+	private String bravo() {
+		System.out.println("bravo");
+		return "bravo.html";
 	}
 }
