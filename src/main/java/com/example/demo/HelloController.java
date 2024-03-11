@@ -46,23 +46,17 @@ public class HelloController {
 	// http://localhost:8080/user/all
 	@GetMapping("/all")
 	public List<User> getAllUser() {
-		List<User> reusltUserList = new ArrayList<>();
+		List<User> allUserList = new ArrayList<>();
+		for (int i = 1; i < 10; i++) {
+			User user = new User();
+			user.setAge(10 + i);
+			user.setUserId(i);
+			String _name = "Name" + i;
+			user.setUserName(_name);
+			allUserList.add(user);
+		}
 
-		User shinoru = new User();
-		shinoru.setAge(34);
-		shinoru.setUserId(1);
-		shinoru.setUserName("snr");
-
-		reusltUserList.add(shinoru);
-
-		User nks = new User();
-		nks.setAge(35);
-		nks.setUserId(2);
-		nks.setUserName("nakashii");
-
-		reusltUserList.add(nks);
-
-		return reusltUserList;
+		return allUserList;
 	}
 
 	// なかしへの課題
