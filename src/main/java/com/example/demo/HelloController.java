@@ -62,13 +62,12 @@ public class HelloController {
 		reusltUserList.add(nks);
 
 		return reusltUserList;
-
 	}
 
 	// なかしへの課題
 	// http://localhost:8080/user/search
 	@GetMapping("/search")
-	public List<User> getOneUser() {
+	public User getOneUser(@RequestParam Integer id) {
 
 		// allUserListに、５０人のユーザー情報を入れ込みました。
 		// ここは、データベースに保存されている５０人の全情報を取ってきました、ということになる（実務では）
@@ -86,8 +85,7 @@ public class HelloController {
 		// 方針としては、このgetOneUserメソッドに、userIdの引数を渡せるように設定する。（↑のtestMethodを参考にするとよい）
 		// では、そのuserIdを使用して、どのようにして一人だけを返すようにするか、実装してほしい。
 
-		return allUserList;
-
+		return allUserList.get(id);
 	}
 
 }
