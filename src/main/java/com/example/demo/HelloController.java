@@ -85,4 +85,30 @@ public class HelloController {
 		// では、そのuserIdを使用して、どのようにして一人だけを返すようにするか、実装してほしい。
 		return allUserList.get(id);
 	}
+
+	// http://localhost:8080/user/search2
+	@GetMapping("/search2")
+	public User getOneUser2(@RequestParam Integer id) {
+
+		// allUserListに、５０人のユーザー情報を入れ込みました。
+		// ここは、データベースに保存されている５０人の全情報を取ってきました、ということになる（実務では）
+		List<User> allUserList = new ArrayList<>();
+		for (int i = 1; i < 50; i++) {
+			User user = new User();
+			user.setAge(10 + i);
+			user.setUserId(i);
+			String _name = "Name" + i;
+			user.setUserName(_name);
+			allUserList.add(user);
+		}
+
+		// では、allUserListから、userIdを指定して、userIdが一致する一人だけを、JSONとして返すにはどのようにしたらよいか？
+		// 方針としては、このgetOneUserメソッドに、userIdの引数を渡せるように設定する。（↑のtestMethodを参考にするとよい）
+		// では、そのuserIdを使用して、どのようにして一人だけを返すようにするか、実装してほしい。
+		return allUserList.get(id);
+	}
+
+
+
+	
 }
