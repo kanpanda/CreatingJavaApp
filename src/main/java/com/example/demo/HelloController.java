@@ -27,7 +27,6 @@ public class HelloController {
 	public String getUser() {
 		String result = "Stringを返します";
 		return result;
-
 	}
 
 	// user/test というパスに、GETリクエストを送ると、実行される。ここは、返値が「void」であるため、返値無し。
@@ -84,8 +83,6 @@ public class HelloController {
 		// では、allUserListから、userIdを指定して、userIdが一致する一人だけを、JSONとして返すにはどのようにしたらよいか？
 		// 方針としては、このgetOneUserメソッドに、userIdの引数を渡せるように設定する。（↑のtestMethodを参考にするとよい）
 		// では、そのuserIdを使用して、どのようにして一人だけを返すようにするか、実装してほしい。
-
 		return allUserList.get(id);
 	}
-
 }
