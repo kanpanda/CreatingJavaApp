@@ -19,7 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RestController
 // URLに/userと入力することで、このclass(ここでいうと、HelloControllerクラス)に結び付くよ、というおまじない
 @RequestMapping("/user")
+<<<<<<< HEAD
 @CrossOrigin(origins = "*")
+=======
+@CrossOrigin
+>>>>>>> c3abd7a4f71888f5ca0c2622656fd6bb26cfcf05
 public class HelloController {
 
 	// "Get"Mappingであることに注意。これは、「/getというパスに、GETリクエストが飛んでくると、この中身が動くよ」というおまじない。正確に言うと、上で指定したものを加味して「/user/get」である。
@@ -46,23 +50,17 @@ public class HelloController {
 	// http://localhost:8080/user/all
 	@GetMapping("/all")
 	public List<User> getAllUser() {
-		List<User> reusltUserList = new ArrayList<>();
+		List<User> allUserList = new ArrayList<>();
+		for (int i = 1; i < 10; i++) {
+			User user = new User();
+			user.setAge(10 + i);
+			user.setUserId(i);
+			String _name = "Name" + i;
+			user.setUserName(_name);
+			allUserList.add(user);
+		}
 
-		User shinoru = new User();
-		shinoru.setAge(34);
-		shinoru.setUserId(1);
-		shinoru.setUserName("snr");
-
-		reusltUserList.add(shinoru);
-
-		User nks = new User();
-		nks.setAge(35);
-		nks.setUserId(2);
-		nks.setUserName("nakashii");
-
-		reusltUserList.add(nks);
-
-		return reusltUserList;
+		return allUserList;
 	}
 
 	// なかしへの課題
