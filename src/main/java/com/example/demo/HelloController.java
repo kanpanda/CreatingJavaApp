@@ -3,7 +3,7 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
+// import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RestController
 // URLに/userと入力することで、このclass(ここでいうと、HelloControllerクラス)に結び付くよ、というおまじない
 @RequestMapping("/user")
-<<<<<<< HEAD
 @CrossOrigin(origins = "*")
-=======
-@CrossOrigin
->>>>>>> c3abd7a4f71888f5ca0c2622656fd6bb26cfcf05
+// =======
+// @CrossOrigin
 public class HelloController {
 
 	// "Get"Mappingであることに注意。これは、「/getというパスに、GETリクエストが飛んでくると、この中身が動くよ」というおまじない。正確に言うと、上で指定したものを加味して「/user/get」である。
